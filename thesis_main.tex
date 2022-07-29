@@ -310,36 +310,6 @@
 \newpage
 
 %-----------------------------------
-% Abbildungsverzeichnis
-%-----------------------------------
-\listoffigures
-\newpage
-%-----------------------------------
-% Tabellenverzeichnis
-%-----------------------------------
-\listoftables
-\newpage
-%-----------------------------------
-% Abkürzungsverzeichnis
-%-----------------------------------
-% Falls das Abkürzungsverzeichnis nicht im Inhaltsverzeichnis angezeigt werden soll
-% dann folgende Zeile auskommentieren.
-\addcontentsline{toc}{section}{\abbreHeadingName}
-\input{abkuerzungen/acronyms}
-\newpage
-
-%-----------------------------------
-% Symbolverzeichnis
-%-----------------------------------
-% In Overleaf führt der Einsatz des Symbolverzeichnisses zu einem Fehler, der aber ignoriert werdne kann
-% Falls das Symbolverzeichnis nicht im Inhaltsverzeichnis angezeigt werden soll
-% dann folgende Zeile auskommentieren.
-\addcontentsline{toc}{section}{\symheadingname}
-\input{skripte/symbolDef}
-\listofsymbols
-\newpage
-
-%-----------------------------------
 % Seitennummerierung auf arabisch und ab 1 beginnend umstellen
 %-----------------------------------
 \pagenumbering{arabic}
@@ -350,25 +320,6 @@
 %-----------------------------------
 % Die Kapitel werden über folgende Datei eingebunden
 \input{skripte/kapitelUebersicht.tex}
-
-%-----------------------------------
-% Apendix / Anhang
-%-----------------------------------
-\newpage
-\section*{\AppendixName} %Überschrift "Anhang", ohne Nummerierung
-\addcontentsline{toc}{section}{\AppendixName} %Den Anhang ohne Nummer zum Inhaltsverzeichnis hinzufügen
-
-\begin{appendices}
-% Nachfolgende Änderungen erfolgten aufgrund von Issue 163
-\makeatletter
-\renewcommand\@seccntformat[1]{\csname the#1\endcsname:\quad}
-\makeatother
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} %
-	\renewcommand{\thesection}{\AppendixName\ \arabic{section}}
-	\renewcommand\thesubsection{\AppendixName\ \arabic{section}.\arabic{subsection}}
-	\input{kapitel/anhang/anhang}
-\end{appendices}
-\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
 
 %-----------------------------------
 % Literaturverzeichnis
@@ -422,5 +373,4 @@
 %\printbibliography[type=online,heading=bibintoc,title={\headingNameInternetSources}]
 %\printbibliography[type=online,heading=subbibliography,title={\headingNameInternetSources}]
 
-\input{kapitel/anhang/erklaerung}
 \end{document}
