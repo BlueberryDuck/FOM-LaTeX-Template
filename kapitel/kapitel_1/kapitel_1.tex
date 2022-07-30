@@ -1,26 +1,33 @@
 \section{Initial Situation and Classification in the Existing Research}
-What is the scientific environment of the topic? In which larger context / question would you place the topic?
+What is the scientific environment of the topic? In which larger context/question would you place the topic?
 
-Answer
+The environment of grammar design, interpreters and basic understanding of full-text search.
 
 Why is the topic relevant? From what do you deduce that your question is relevant? Who might have an interest in or benefit from the results?
 
-Answer
+With options such as word and phrase-based searches and the ability to index documents in their native formats for example Office documents and PDFs, full-text search functionality is an increasingly important function in modern databases and document management systems. Being able to operate such a mighty feature with an easy-to-understand grammar instead of learning SQL is just one example of why custom languages generating code are getting in higher demand.
 
-What is already available? What has already been tried? With which result?
+What is already available? What has already been tried?
 
-Answer
+There are many examples of code generators to either make writing code more accessible or assist experienced developers. This specific example of full-text search is often used in a simplified way by search engines.
 \section{Approach and Methodology}
-Do you want to collect data independently (empirical research) or rely on existing data / literature?
+Do you want to collect data independently (empirical research) or rely on existing data/literature?
 
-Answer
-
-What methodology will you use to collect data: Opensource? Commons? Questionnaire? Interviews or other methods? (e.g., expert interviews, via email or phone). With whom? Sample size?
-
-Answer
-
-How do you want to proceed with the analysis of the data? Which theory(s) do you want to apply and use, if necessary?
-
-Answer
+Rely on existing literature for concepts and try to implement them. (Prototype implementation)
 \section{Outline}
-Outline here
+\begin{enumerate}
+    \item Introduction
+    \item Theory
+    \begin{enumerate}
+        \item Elaboration of the language elements for full-text search in common relational databases (Microsoft SQL Server)
+        \item How to build interpreters
+    \end{enumerate}
+    \item Prototype
+    \begin{enumerate}
+        \item Definition of grammar for full-text search input and schematic description of the grammar using the extended Backus-Naur form
+        \item Conversion of the grammar into a software component in a web application
+    \end{enumerate}
+    \item Source Code
+    \item Examples and Usage
+    \item Conclusion
+\end{enumerate}
