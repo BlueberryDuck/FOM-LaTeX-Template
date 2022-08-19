@@ -1,13 +1,17 @@
 \section{Problem of the Thesis and Scientific Question}
 Current relational databases go far beyond the transactional processing of data with their functionalities. One of these functionalities is the possibility of a full-text search over data. For this full-text search, powerful extensions of the database query language (SQL) are available, which generate complex query terms by an extensive combination of operators. The goal of this thesis is to generate query terms for the database based on a search engine-like input. The starting point for the input can be e.g. the search operators of Google.\\
-The scientific question may be defined as 'To what extent can a software component be developed using a custom query language and interpreter to enable full-text search on Microsoft SQL servers?'
+The scientific question may be defined as 'To what extent can a software component be developed using a custom query language and code generator to enable full-text search on Microsoft SQL servers?'
+\newpage
 \section{Initial Situation and Classification in the Existing Research}
 The thesis can be classified into the scientific areas of interpreter construction and full-text search.\\
-The topic of full-text search, with possibilities such as word and phrase-based search and the ability to index documents in their native form, such as office documents and pdfs, is an increasingly important feature of modern databases and document management systems and thus of great relevance. Making such a powerful tool, through easy-to-use search engines and grammar, as easily accessible as possible, without requiring prior knowledge of SQL, allows it to be used by individuals and companies with little IT knowledge. Just one example of why domain-specific languages and interpreters play an important role in today's IT world.\\
+The topic of full-text search, with possibilities such as word and phrase-based search and the ability to index documents in their native form, such as office documents and pdfs, is an increasingly important feature of modern databases and document management systems and thus of great relevance. Making such a powerful tool, through easy-to-use search engines and grammar, as easily accessible as possible, without requiring prior knowledge of SQL, allows it to be used by individuals and companies with little IT knowledge. Just one example of why domain-specific languages and code generators play an important role in today's IT world.\\
 There are already many examples of how such custom languages and interpreters make writing code more accessible or support experienced software engineers in their development. Examples in the context of full-text search are search engines, which generate SQL statements from search queries.
+\newpage
 \section{Approach and Methodology}
-To achieve the objective of my thesis I will refer to literature that defines concepts of full-text search and the development of interpreters. Based on this I use the method of prototypical implementation and try to apply these concepts practically.
+To achieve the objective of my thesis I will refer to literature that defines concepts of full-text search and the development of interpreters. Based on this I will make use of a prototypical implementation and try to apply these concepts practically. A software prototype is defined as an executable model with essential properties of the target system, which is the basis for the system specification. The model reproduces essential properties of the planned system in a descriptive and easily modifiable form. The prototype should represent the functionality much more effectively than textual descriptions or purely static models. \parencite[cf.][]{connell_structured_1989} The implementation of a prototype is an iterative process: Implementation followed by evaluating and adapting to new problems and specifications. In each case, as much functionality is implemented as is necessary to verify the targeted phase result. \parencite[cf.][p. 3]{pomberger_methoden_1992}
+\newpage
 \section{Outline}
+The following is a draft of the structure of the thesis, which is subject to change.
 \begin{enumerate}[noitemsep]
     \item Abstract
     \item Theory
@@ -19,21 +23,23 @@ To achieve the objective of my thesis I will refer to literature that defines co
             \item DSL
             \item EBNF
         \end{itemize}
-        \item How to build an interpreter
+        \item How to build a code generator
     \end{itemize}
     \item Implementation
     \item Source Code
-    \item Examples and Presentation
+    \item Examples and Demonstration
     \item Summary
 \end{enumerate}
+\newpage
 \section{Literature}
-The core of my literature will be "Pro full-text search in SQL Server 2008" by Michael Coles and "Crafting interpreters" by Robert Nystrom, which define the most important elements of full-text search and interpreter development. In addition, I will refer to articles from projects similar to mine and review their approach and sources for my purposes. Articles I have found recently on this topic are several projects by H. Bast, who have developed tools to assist in full-text search.
+The core of my literature will be "Pro full-text search in SQL Server 2008" by Michael Coles \parencite{coles_pro_2009} and "Crafting interpreters" by Robert Nystrom \parencite{nystrom_crafting_2021}, which define the most important elements of full-text search and interpreter development. In addition, I will refer to articles from projects similar to mine and review their approach and sources for my purposes. Articles I have found recently on this topic are several projects by H. Bast, who has developed tools to assist in full-text search. \parencite{bast_index_2013}\parencite{bast_broccoli_2013}
 \section{Working Title}
 The title of my thesis is "Development of a Query Language for Full-Text Search in Relational Databases".
-\section{Objective / Expected Result }
-The objective of my thesis should be an artifact that allows you to define certain search criteria in a search box on a website. These search criteria should enable functions of the full-text search, e.g. reflections and phrase-based search. From this, appropriate SQL code is generated and applied to a Microsoft SQL server. As a result, tuples of server content are to be displayed that match the search query, e.g. excerpts from Word documents or pdfs.
+\newpage
+\section{Objective / Expected Result}
+The objective of my thesis is a prototype that allows you to define certain search criteria in a search box on a website. These search criteria should enable functions of the full-text search, e.g. reflections and phrase-based search. From this, appropriate SQL code is generated and applied to a Microsoft SQL server. As a result, tuples of server content are to be displayed that match the search query, e.g. excerpts from Word documents or pdfs.
 \section{Project / Time Schedule}
 August 3rd - September 2nd | Literature research and writing of the theoretical part\\
-September 3rd - October 2nd | Developing the grammar and the artifact\\
+September 3rd - October 2nd | Developing the grammar and prototype\\
 October 3rd - October 16th | Writing down the development process and demonstration\\
 October 17th - November 3rd | Buffer and Proofreading
