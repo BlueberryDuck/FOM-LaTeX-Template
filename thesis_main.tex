@@ -94,24 +94,8 @@
 % sauber formatierter Quelltext
 %-----------------------------------
 \usepackage{listings}
-% JavaScript als Sprache definieren:
-\lstdefinelanguage{JavaScript}{
-	keywords={break, super, case, extends, switch, catch, finally, for, const, function, try, continue, if, typeof, debugger, var, default, in, void, delete, instanceof, while, do, new, with, else, return, yield, enum, let, await},
-	keywordstyle=\color{blue}\bfseries,
-	ndkeywords={class, export, boolean, throw, implements, import, this, interface, package, private, protected, public, static},
-	ndkeywordstyle=\color{darkgray}\bfseries,
-	identifierstyle=\color{black},
-	sensitive=false,
-	comment=[l]{//},
-	morecomment=[s]{/*}{*/},
-	commentstyle=\color{purple}\ttfamily,
-	stringstyle=\color{red}\ttfamily,
-	morestring=[b]',
-	morestring=[b]"
-}
 
 \lstset{
-	%language=JavaScript,
 	numbers=left,
 	numberstyle=\tiny,
 	numbersep=5pt,
@@ -199,17 +183,6 @@
 \BeforeStartingTOC[lot]{\renewcommand*\autodot{:}} % Für den Doppelpunkt hinter Präfix im Tabellenverzeichnis
 
 %-----------------------------------
-% Abkürzungsverzeichnis
-%-----------------------------------
-\usepackage[printonlyused]{acronym}
-
-%-----------------------------------
-% Symbolverzeichnis
-%-----------------------------------
-% Quelle: https://www.namsu.de/Extra/pakete/Listofsymbols.pdf
-\usepackage[final]{listofsymbols}
-
-%-----------------------------------
 % PDF Meta Daten setzen
 %-----------------------------------
 \usepackage[hyperfootnotes=false]{hyperref} %hyperfootnotes=false deaktiviert die Verlinkung der Fußnote. Ansonsten inkompaibel zum Paket "footmisc"
@@ -294,12 +267,6 @@
 \input{kapitel/titelseite}
 
 %-----------------------------------
-% Vorwort (optional; bei Verwendung beide Zeilen entkommentieren und unter Inhaltsverzeichnis setcounter entsprechend anpassen)
-%-----------------------------------
-%\input{kapitel/vorwort/vorwort}
-%\newpage
-
-%-----------------------------------
 % Inhaltsverzeichnis
 %-----------------------------------
 % Um das Tabellen- und Abbbildungsverzeichnis zu de/aktivieren ganz oben in Documentclass schauen
@@ -325,52 +292,6 @@
 % Literaturverzeichnis
 %-----------------------------------
 \newpage
-
-% Die folgende Zeile trägt ALLE Werke aus literatur.bib in das
-% Literaturverzeichnis ein, egal ob sie zietiert wurden oder nicht.
-% Der Befehl ist also nur zum Test der Skripte sinnvoll und muss bei echten
-% Arbeiten entfernt werden.
-%\nocite{*}
-
-%\addcontentsline{toc}{section}{Literatur}
-
-% Die folgenden beiden Befehle würden ab dem Literaturverzeichnis wieder eine
-% römische Seitennummerierung nutzen.
-% Das ist nach dem Leitfaden nicht zu tun. Dort steht nur dass 'sämtliche
-% Verzeichnisse VOR dem Textteil' römisch zu nummerieren sind. (vgl. S. 3)
-%\pagenumbering{Roman} %Zähler wieder römisch ausgeben
-%\setcounter{page}{4}  %Zähler manuell hochsetzen
-
-% Ausgabe des Literaturverzeichnisses
-
-% Keine Trennung der Werke im Literaturverzeichnis nach ihrer Art
-% (Online/nicht-Online)
-%\begin{RaggedRight}
-%\printbibliography
-%\end{RaggedRight}
-
-% Alternative Darstellung, die laut Leitfaden genutzt werden sollte.
-% Dazu die Zeilen auskommentieren und folgenden code verwenden:
-
-% Literaturverzeichnis getrennt nach Nicht-Online-Werken und Online-Werken
-% (Internetquellen).
-% Die Option nottype=online nimmt alles, was kein Online-Werk ist.
-% Die Option heading=bibintoc sorgt dafür, dass das Literaturverzeichnis im
-% Inhaltsverzeichnis steht.
-% Es ist übrigens auch möglich mehrere type- bzw. nottype-Optionen anzugeben, um
-% noch weitere Arten von Zusammenfassungen eines Literaturverzeichnisse zu
-% erzeugen.
-% Beispiel: [type=book,type=article]
 \printbibliography[heading=bibintoc,title={\langde{Literaturverzeichnis}\langen{Bibliography}}]
-
-% neue Seite für Internetquellen-Verzeichnis
-%\newpage
-
-% Laut Leitfaden 2018, S. 14, Fussnote 44 stehen die Internetquellen NICHT im
-% Inhaltsverzeichnis, sondern gehören zum Literaturverzeichnis.
-% Die Option heading=bibintoc würde die Internetquelle als eigenen Eintrag im
-% Inhaltsverzeicnis anzeigen.
-%\printbibliography[type=online,heading=bibintoc,title={\headingNameInternetSources}]
-%\printbibliography[type=online,heading=subbibliography,title={\headingNameInternetSources}]
 
 \end{document}
