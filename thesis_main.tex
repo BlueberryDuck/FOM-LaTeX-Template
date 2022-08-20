@@ -19,7 +19,7 @@
 \newif\ifen
 
 %-----------------------------------
-% Meta informationen
+% Meta information
 %-----------------------------------
 \input{skripte/meta}
 
@@ -154,6 +154,12 @@
 % Weitere Ebene einfügen
 %-----------------------------------
 \input{skripte/weitereEbene}
+
+%-----------------------------------
+% Enumerate format same as toc
+%-----------------------------------
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
 
 %-----------------------------------
 % Paket für die Nutzung von Anhängen
