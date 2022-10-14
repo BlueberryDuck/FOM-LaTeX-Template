@@ -67,3 +67,52 @@ The third and simplest generate function is generate\_operator, which translates
     \lstinputlisting[language=Rust, linerange={190-201}]{code/code_gen/generator.rs}
     \centerline{Source: generator.rs}
 \end{codeenv}
+All parts up to the generator combined already make up a working code generator for a custom query language. For example the input \lstinline[language=Fulltext-Search]$@contains:apple -tree: + @thesaurus:"human":$, the lexer converts into a list of tokens. The parser then interprets these tokens into an \ac{AST}, one exemplary representation can be seen in figure \ref{fig:ast-example}.
+\begin{figure}[H]
+    \caption{Parsed example AST}
+    \label{fig:ast-example}
+    \begin{forest}
+        box/.style={sharp corners,
+        draw=gray!50,
+        fill=gray!20,
+        },
+        for tree={box,align=center,minimum width=80pt}
+            [{Infix\\AND}
+                    [Contains
+                            [{Infix\\AND}
+                                    [{WordOrPhrase\\apple}]
+                                    [{Prefix\\NOT}
+                                            [{WordOrPhrase\\tree}]
+                                    ]
+                            ]
+                    ]
+                    [Thesaurus
+                            [{WordOrPhrase\\"human"}]
+                    ]
+            ]
+    \end{forest}
+    \\
+    \centerline{Source: Own representation}
+\end{figure}
+The generator then takes the \ac{AST} and generates from it the \ac{SQL} in code listing \ref{code:sql-example}. Lines 1 to 9 and 11 to 14 are the more or less pre-formulated part using the constants of the test database. Line 10 is the intriguing part, which is generated from the passed funcitons and search criteria.
+\begin{codeenv}
+    \captionof{mycapcode}{Generated example SQL}
+    \label{code:sql-example}
+    \begin{lstlisting}[language=SQL]
+USE Wikipedia;
+SELECT TOP 5 *
+FROM(
+        SELECT FT_TBL.Title,
+            KEY_TBL.RANK
+        FROM [dbo].[Real_Article] AS FT_TBL
+            INNER JOIN CONTAINSTABLE(
+                [dbo].[Real_Article],
+                *,
+                ' ( apple ) AND NOT ( tree ) AND FORMSOF(THESAURUS,"human") '
+            ) AS KEY_TBL ON FT_TBL.[ID] = KEY_TBL.[KEY]
+        WHERE KEY_TBL.RANK > 5
+    ) AS FS_RESULT
+ORDER BY FS_RESULT.RANK DESC;
+    \end{lstlisting}
+    \centerline{Source: Own code generator}
+\end{codeenv}
