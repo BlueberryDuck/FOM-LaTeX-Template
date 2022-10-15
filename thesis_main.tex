@@ -110,11 +110,16 @@
 
 \lstdefinelanguage{Fulltext-Search}{
 	keywords={@contains, @startswith, @inflection, @thesaurus, @near, @weighted},
-	keywordstyle=\color{blue}\bfseries,
 	ndkeywords={:, +, &, |, !, -},
-	ndkeywordstyle=\color{darkgray}\bfseries,
-	stringstyle=\color{red}\ttfamily,
+	ndkeywordstyle=\color{darkgray},
 	morestring=[b]"
+}
+\lstdefinelanguage{toml}{
+	keywords={package, dependencies, name, version, edition},
+	ndkeywords={[,],=},
+	ndkeywordstyle=\color{darkgray},
+	morestring=[b]",
+	morecomment=[l]{\#}
 }
 
 \lstset{
