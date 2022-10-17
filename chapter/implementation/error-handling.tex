@@ -1,2 +1,18 @@
 \subsection{Error Handling}
-text
+To prevent a simple input error or faulty communication between the \ac{SQL} server, script, or website from crashing the software immediately, instead of displaying clarifying error messages, proper error handling must be implemented. This is not only relevant for the finished prototype and thus a reasonable user experience, but also helpful during development to detect and fix errors early on.\\
+To handle errors caused by incorrect user input in the search field, the error token has already been introduced in the lexer (code \ref{code:tokens}, 78-80). In the parser, grammar errors must be handled. For this purpose, several custom error types are defined with the help of the crate thiserror. To do this, the derive statement must be passed Error \parencite[cf.][n.p.]{tolnay_thiserror_2019}, as in the case of the parser in code listing \ref{code:parser-error} line 367.\\
+These errors are then used in all parse functions, such as parse\_statement and parse\_weighted, by returning a datatype called Result (code \ref{code:parser-error}, 119+327). Every time an error case is reached in the code, the corresponding error message is returned (code \ref{code:parser-error}, 143+351). This procedure using results as datatype allows the use of a '?' operator when calling the function to forward an error in case one is returned (code \ref{code:parser-error}, 141).
+\begin{codeenv}
+    \captionof{mycapcode}{Error handling in parser}
+    \label{code:parser-error}
+    \lstinputlisting[language=Rust, linerange={119-120}]{code/code_gen/parser.rs}
+    \vdots
+    \lstinputlisting[language=Rust, linerange={140-144}]{code/code_gen/parser.rs}
+    \vdots
+    \lstinputlisting[language=Rust, linerange={327-327}]{code/code_gen/parser.rs}
+    \vdots
+    \lstinputlisting[language=Rust, linerange={350-352}]{code/code_gen/parser.rs}
+    \vdots
+    \lstinputlisting[language=Rust, linerange={366-375}]{code/code_gen/parser.rs}
+    \centerline{Source: parser.rs}
+\end{codeenv}
