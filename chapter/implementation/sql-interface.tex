@@ -1,2 +1,16 @@
 \subsection{Interface with SQL server}
-To interface with the local \ac{SQL} server the command line is used.
+To interface with the \ac{SQL} server hosting the full-text index and test data a connection must be established to run any queries. Since the server is hosted on the same machine as the Rust script, the local command line can be used. The command is passed the \ac{SQL} as a path to the respective file and the result is then written to a path by the server as well (code \ref{code:sql-server}, 67-70).
+\begin{codeenv}
+    \captionof{mycapcode}{Execute SQL}
+    \label{code:sql-server}
+    \lstinputlisting[language=Rust, linerange={57-74}]{code/code_gen/main.rs}
+    \centerline{Source: main.rs}
+\end{codeenv}
+The result of the server is stored in a txt file. The content is formatted to be easier for a human to read, but less suitable for machine processing. The first and last lines of the file contain query metadata, such as column names and numbers, and characters to visually delimit them, so they are removed (code \ref{code:server-results}, 86-94). The results themselves are formatted with unnecessary whitespace, and the last entry in a row is interpreted as the rank value (code \ref{code:server-results}, 99-106).
+\begin{codeenv}
+    \captionof{mycapcode}{SQL server results}
+    \label{code:server-results}
+    \lstinputlisting[language=Rust, linerange={76-111}]{code/code_gen/main.rs}
+    \centerline{Source: main.rs}
+\end{codeenv}
+These two functions enable the automatic execution and evaluation of queries on the \ac{SQL} server, where any kind of test data can be stored.
