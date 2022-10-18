@@ -21,11 +21,23 @@ To cover a large part of the possible full-text search queries, six functions we
 \textbf{Near} can search for documents where two or more search terms must occur within a certain distance of each other. Distance in this case means how many words separate the search terms\\
 \textbf{Weighted} enables the search for multiple search terms and assigns each a weight to allow certain terms to be prioritized.\\
 Some of the functions require the definition of more possible parameters than just words and phrases. For the function Near a positive integer is needed to specify the distance and for Weighted positive decimal numbers between zero and one are needed to assign a weight to the search parameters. In addition, functions should also be combinable with operators.\\
-These specifications and rules define the language in \ac{EBNF} as follows:
-% ganz kompliziert bitte nächstes mal machen
+These specifications and rules can be defined in \ac{EBNF} as follows:
 \begin{grammar}
-    <search> ::= <function><operator><function>; \\
-    <function> ::= '@contains'; \\
-    <parameter> ::= <word>|' '' '\{[' ']<word>\}' '' '; \\
-    <word> ::= \{'a'-'z'|'A'-'Z'\};
+    <search> ::= <function>\{[<infix><function>]\}; \\
+    <infix> ::= '+'|'\&'|'|'; \\
+    <function> ::= '@'(<contains>|<startswith>|<inflection>|<thesaurus>|<near>|<weighted>); \\
+
+    <contains> ::= 'contains:'<expression>':'; \\
+    <startswith> ::= 'startswith:'<expression>':'; \\
+    <inflection> ::= 'inflection:'<wordorphrase>':'; \\
+    <thesaurus> ::= 'thesaurus:'<wordorphrase>':'; \\
+    <near> ::= 'near:'<wordorphrase>\{','<wordorphrase>\}[','<posinteger>]':'; \\
+    <weighted> ::= 'weighted:'\{<wordorphrase>','<zerotoone>\}':'; \\
+
+    <expression> ::= <wordorphrase>[' '<wordorphrase>]|'('<expression>')'|('-'|'!')<expression>\\
+    \hspace*{\fill}|<expression><infix><expression>; \\
+    <wordorphrase> ::= <word>|' '' '\{[' ']<word>\}' '' '; \\
+    <word> ::= \{'a'-'z'|'A'-'Z'\}; \\
+    <posinteger> ::= \{'0'-'9'\}; \\
+    <zerotoone> ::= \{0\}['.'\{'0'-'9'\}]|'1';
 \end{grammar}
