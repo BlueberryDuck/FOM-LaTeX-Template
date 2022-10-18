@@ -1,7 +1,7 @@
 \subsection{Error Handling}
 To prevent a simple input error or faulty communication between the \ac{SQL} server, script, or website from crashing the software immediately, instead of displaying clarifying error messages, proper error handling must be implemented. This is not only relevant for the finished prototype and thus a reasonable user experience, but also helpful during development to detect and fix errors early on.\\
 To handle errors caused by incorrect user input in the search field, the error token has already been introduced in the lexer (code \ref{code:tokens}, 78-80). In the parser, grammar errors must be handled. For this purpose, several custom error types are defined with the help of the crate thiserror. To do this, the derive statement must be passed Error \parencite[cf.][n.p.]{tolnay_thiserror_2019}, as in the case of the parser in code listing \ref{code:parser-error} line 367.\\
-These errors are then used in all parse functions, such as parse\_statement and parse\_weighted, by returning a datatype called Result (code \ref{code:parser-error}, 119+327). Every time an error case is reached in the code, the corresponding error message is returned (code \ref{code:parser-error}, 143+351). This procedure using results as datatype allows the use of a '?' operator when calling the function to forward an error in case one is returned (code \ref{code:parser-error}, 141).
+These errors are then used in all parse functions, such as parse\_statement and parse\_weighted, by returning a datatype called Result (code \ref{code:parser-error}, 119+327). Every time an error case is encountered in the code, the corresponding error message is returned (code \ref{code:parser-error}, 143+351). This procedure using results as datatype allows the use of a '?' operator when calling the function to forward an error in case one is returned (code \ref{code:parser-error}, 141).
 \begin{codeenv}
     \captionof{mycapcode}{Error handling in parser}
     \label{code:parser-error}
@@ -16,3 +16,14 @@ These errors are then used in all parse functions, such as parse\_statement and 
     \lstinputlisting[language=Rust, linerange={366-375}]{code/code_gen/parser.rs}
     \centerline{Source: parser.rs}
 \end{codeenv}
+A similar approach can be found in the generator.\\
+When the code generator is executed, it checks after each step to see if an error was thrown. If so, an error is also thrown and the error message is passed. In the result function of the website, where the code generator is executed, a check is made whether an error was thrown (code \ref{code:web-error}, 167-173). In this case, the website is not passed a list of results, but an error message to display.
+\begin{codeenv}
+    \captionof{mycapcode}{Error display}
+    \label{code:web-error}
+    \lstinputlisting[language=Rust, linerange={134-138}]{code/code_gen/main.rs}
+    \vdots
+    \lstinputlisting[language=Rust, linerange={166-173}]{code/code_gen/main.rs}
+    \centerline{Source: main.rs}
+\end{codeenv}
+There are many other small prompts to catch errors, but the above examples are the most important elements of the code generator itself.
