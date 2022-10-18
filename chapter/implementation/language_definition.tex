@@ -1,6 +1,6 @@
 \newpage
 \section{Implementation}
-When using the full-text search, large parts of the SQL statements needed to describe the search are the same, since the search criteria are defined as either WHERE conditions or JOIN criteria. If you want to define a full-text search, you usually use a combination of the given functions. In MSSQL this would be for example CONTAINS or FORMSOF. Therefore I want to develop a query language where you only have to specify this combination of functions and a few parameters to generate the corresponding SQL.
+When using the full-text search, large parts of the SQL statements needed to describe the search are the same, since the search criteria are defined as either WHERE conditions or JOIN criteria. To define a full-text search, usually use a combination of the given functions is used. In Transact-\ac{SQL} this would be for example CONTAINS or FORMSOF. Therefore the goal is to develop a query language where only a combination of functions and a few parameters is necessary to generate the corresponding SQL.
 \subsection{Language definition}
 The first step to defining a language is to define its purpose. In this case, there should be functions that represent full-text functions. Furthermore, one must be able to pass parameters to these functions and one should be able to combine both parameters and functions with logical operators and, or and not.
 To announce a function, this query language uses an '@', e.g. '@contains'. From programming languages of the C-family one recognizes the use of parentheses '()' to define parameters. To avoid later confusion with parentheses used for logical grouping, this language uses the colon ':' to enclose parameters. For now, a parameter is defined as a simple word or phrase, which is delimited with quotes '"'. These few rules already allow the definition of a query, such as \lstinline[language=Fulltext-Search]$@contains:apple:$ where 'contains' is the name of a function.
@@ -12,5 +12,20 @@ This first set of rules can be written in \ac{EBNF} as:
     <word> ::= \{'a'-'z'|'A'-'Z'\};
 \end{grammar}
 Note that the function variable only includes 'contains'. In future definitions, it should accept the different functions that are going to be defined.\\
-A feature that is also needed is the logical combination and negation of multiple search terms. For example, it should be possible to search for 'apple' or 'tree' and not 'worm'. For and the language accepts the characters '\&' and '+', for or it accepts '|' and for negation it accepts '!' and '-'. To cover all possible logical operations, groups are also needed to allow precedence between the different operators. For this parentheses are used. Using groups it is now possible to build a logic like 'apple' AND NOT('tree' OR 'worm'), where the whole statement inside the parentheses is processed negated, and prioritized instead of being processed from left to right.
-% To be continued
+A feature that is also needed is the logical combination and negation of multiple search terms. For example, it should be possible to search for 'apple' or 'tree' and not 'worm'. To represent AND the language accepts the characters '\&' and '+', for OR it accepts '|', and for negation it accepts '!' and '-'. To cover all possible logical operations, groups are also needed to allow precedence between the different operators. For this parentheses are used. Using groups it is now possible to build a logic like 'apple' AND NOT('tree' OR 'worm'), where the whole statement inside the parentheses is processed negated, and prioritized instead of simply being processed from left to right.\\
+To cover a large part of the possible full-text search queries, six functions were finally selected which are to be implemented in the query language:\\
+\textbf{Contains} should be a simple search for a search term or a combination of search terms.\\
+\textbf{Startswith} searches for terms, which start with the given search term.\\
+\textbf{Inflection} takes the given search terms and searches for words with the same root and variations of it.\\
+\textbf{Thesaurus} uses a thesaurus to search for entries with the same meaning as the search terms.\\
+\textbf{Near} can search for documents where two or more search terms must occur within a certain distance of each other. Distance in this case means how many words separate the search terms\\
+\textbf{Weighted} enables the search for multiple search terms and assigns each a weight to allow certain terms to be prioritized.\\
+Some of the functions require the definition of more possible parameters than just words and phrases. For the function Near a positive integer is needed to specify the distance and for Weighted positive decimal numbers between zero and one are needed to assign a weight to the search parameters. In addition, functions should also be combinable with operators.\\
+These specifications and rules define the language in \ac{EBNF} as follows:
+% ganz kompliziert bitte nächstes mal machen
+\begin{grammar}
+    <search> ::= <function><operator><function>; \\
+    <function> ::= '@contains'; \\
+    <parameter> ::= <word>|' '' '\{[' ']<word>\}' '' '; \\
+    <word> ::= \{'a'-'z'|'A'-'Z'\};
+\end{grammar}
