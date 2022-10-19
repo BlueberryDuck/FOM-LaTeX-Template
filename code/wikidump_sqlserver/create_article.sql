@@ -1,12 +1,7 @@
 USE Wikipedia;
-DROP TABLE Real_Article;
-CREATE TABLE [dbo].[Real_Article](
+DROP TABLE [dbo].[Article];
+CREATE TABLE [dbo].[Article](
+   [id] [int] IDENTITY(1, 1) NOT NULL,
    [Title] [varchar](255) NULL,
    [Text] [varchar](max) NULL
 );
-INSERT INTO Real_Article(Title, Text)
-VALUES ('Example', 'Fulltext');
-SELECT *
-FROM Real_Article;
-DELETE FROM Real_Article
-WHERE Title = 'Example';
