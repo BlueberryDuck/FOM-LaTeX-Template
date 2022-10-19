@@ -58,10 +58,8 @@ def pluck_wikipedia_titles_text(
                         len(title) if len(title) > longestTitle else longestTitle
                     )
                     longestText = len(text) if len(text) > longestText else longestText
-                    if totalCount > 1 and (totalCount % 100000) == 0:
+                    if totalCount % 100000 == 0:
                         print("{:,}".format(totalCount))
-                    if totalCount >= 1000:
-                        break
     print(
         f"Total Count: {totalCount}\nLongest Title: {longestTitle}\nLongest Text: {longestText}"
     )
