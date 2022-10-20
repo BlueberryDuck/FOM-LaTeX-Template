@@ -6,7 +6,7 @@ import csv
 import time
 import os
 
-PATH_WIKI_XML = "/Users/light/Documents/Wikipedia/"
+PATH_WIKI_XML = "path redacted"
 FILENAME_ARTICLES = "articles.csv"
 
 
