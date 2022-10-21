@@ -45,7 +45,7 @@ The actual generated \ac{SQL} can be looked up in the prototype files if needed.
     \\
     \centerline{Source: Own prototype}
 \end{figure}
-For demonstration purposes, a complicated search query with multiple functions and nested search terms can also be submitted. A search for apple but without the presence of the terms company or Steve Jobs in combination with a term that has the same meaning as fruit can be formulated in the query language like this: \lstinline[language=Fulltext-Search]$@contains:apple -(company | "Steve Jobs"): + @thesaurus:fruit:$.
+For demonstration purposes, a complicated search query with multiple functions and nested search terms can also be submitted. A search for apple but without the presence of the terms company or Steve Jobs in combination with a term that has the same meaning as fruit can be formulated in the query language as \lstinline[language=Fulltext-Search]$@contains:apple -(company | "Steve Jobs"): + @thesaurus:fruit:$.
 \begin{figure}[H]
     \caption{Results for fruit apples}
     \label{fig:apple-fruit}
