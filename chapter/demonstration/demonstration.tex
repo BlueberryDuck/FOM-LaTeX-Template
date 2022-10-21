@@ -2,7 +2,7 @@
 \section{Demonstration}
 In this chapter, the prototype is shown demonstratively to highlight the purpose and workings of the code generator. By adjusting the constants in the generator.rs file, it is possible to apply the generator to several similarly constructed databases. The test data in this demonstration is the same database as in the development and testing of the prototype. This is a formatted version of an official Wikipedia dump from September 20th, 2022 \parencite[see][n.p.]{wikimedia_enwiki_nodate}.
 \subsection{Database preparations}
-The Wikipedia dump is provided in one or more compressed .bz2 files. With the help of an etree of lxml a parser can be built, with which the title and content of each entry can be extracted. Many of the entries are so-called redirects, which are irrelevant for a full-text search and are filtered out (code \ref{code:wiki-csv}, 54). Otherwise, the title and content are written to a \ac{CSV} file, and further, the longest title and text entries as well as the total amount of entries are being kept track of.
+The Wikipedia dump is provided in one or more compressed .bz2 files. With the help of an etree of lxml a parser can be built, with which the title and content of each entry can be extracted. Many of the entries are so-called redirects, which are irrelevant for a full-text search and are filtered out (code \ref{code:wiki-csv}, 54). Otherwise, the title and content are written to a CSV file, and further, the longest title and text entries as well as the total amount of entries are being kept track of.
 \begin{codeenv}
     \captionof{mycapcode}{Wikipedia as csv}
     \label{code:wiki-csv}
@@ -10,7 +10,7 @@ The Wikipedia dump is provided in one or more compressed .bz2 files. With the he
     \centerline{Source: convert\_wiki\_to\_csv.py}
 \end{codeenv}
 When running the script a total of 6,703,714 entries were written in a total runtime of 58 minutes and 14 seconds.\\
-Based on the values of the longest title and text a table with a unique id is created. Since the \ac{CSV} does not contain an id, a temporary view is created into which a bulk insert is executed. The path to the file has been redacted afterward.
+Based on the values of the longest title and text a table with a unique id is created. Since the CSV does not contain an id, a temporary view is created into which a bulk insert is executed. The path to the file has been redacted afterward.
 \begin{codeenv}
     \captionof{mycapcode}{Insert into SQL server}
     \label{code:wiki-sql}
