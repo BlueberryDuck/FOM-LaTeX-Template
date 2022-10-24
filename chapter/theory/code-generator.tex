@@ -1,4 +1,4 @@
-\subsection{Code generators}
+\subsection{Code Generator}\label{sec:code-gen}
 As soon as a language is defined, for example by writing it down in \ac{EBNF}, the development of a code generator can be started. Generators can be implemented using a template-based approach \parencite[see][]{cleaveland_program_2001}, the template metaprogramming capabilities of a language (e.g., in C++), or extendable programming systems (e.g., OpenC++) \parencite[cf.][p. 16]{czarnecki_generative_2000}.\\
 Code generators are divided into two phases, a front end, and a back end. The front end primarily contains a lexical and syntactical analysis of the input up to the conversion of this input into an intermediate representation, here \ac{AST}. The back end then takes this representation and deals with the code generation \parencite[cf.][p. 7]{wirth_compiler_1996}. With this modular decoupling, many different kinds of code generators can be built, which can implement the front end independent of the target language.\\
 Some further split these into more phases or components, as shown in the following figure.

@@ -1,4 +1,4 @@
-\subsection{Interface with SQL server}
+\subsection{Interface SQL Server}
 To interface with the \ac{SQL} server hosting the full-text index and test data a connection must be established to run any queries. Since the server is hosted on the same machine as the Rust script, the local command line can be used. The command is passed the \ac{SQL} as a path to the respective file and the result is then written to a path by the server as well (code \ref{code:sql-server}, 67-70).
 \begin{codeenv}
     \captionof{mycapcode}{Execute SQL}

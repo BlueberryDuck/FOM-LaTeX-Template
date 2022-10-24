@@ -1,4 +1,4 @@
-\subsection{Website as software interface}
+\subsection{Website as User Interface}
 To interact with the code generator a website is used as an interface. To create a simple website the Rust crate actix\_web is used, which provides a web framework for Rust, and the crate tera, which enables the use of templates to quickly create a working frontend.\\
 To host a website using actix\_web, an HTTP server must be started in an asynchronous main function \parencite[cf.][n.p.]{ede_actix_2022}. With the help of tera, HTML templates can now be used \parencite[cf.][n.p.]{prouillet_tera_2022} to pass data to the server (code \ref{code:main}, 20+22). The HTML code of the website can be found in the appendix. The HTTP server hosts two subpages (code \ref{code:main}, 23-24). These are the start page, where a search query can be submitted, and the result page, where the search results will be displayed.
 \begin{codeenv}

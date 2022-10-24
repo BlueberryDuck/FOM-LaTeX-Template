@@ -1,7 +1,7 @@
 \newpage
 \section{Demonstration}
 In this chapter, the prototype is shown demonstratively to highlight the purpose and workings of the code generator. By adjusting the constants in the generator.rs file, it is possible to apply the generator to several similarly constructed databases. The test data in this demonstration is the same database as in the development and testing of the prototype. This is a formatted version of an official Wikipedia dump from September 20th, 2022 \parencite[see][n.p.]{wikimedia_enwiki_2022}.
-\subsection{Database preparations}
+\subsection{Database Preparation}
 The Wikipedia dump is provided in one or more compressed .bz2 files. With the help of an etree of lxml a parser can be built, with which the title and content of each entry can be extracted. Many of the entries are so-called redirects, which are irrelevant for a full-text search and are filtered out (code \ref{code:wiki-csv}, 54). Otherwise, the title and content are written to a CSV file, and further, the longest title and text entries as well as the total amount of entries are being kept track of.
 \begin{codeenv}
     \captionof{mycapcode}{Wikipedia as csv}
@@ -20,7 +20,7 @@ Based on the values of the longest title and text a table with a unique id is cr
     \centerline{Source: create\_article, create\_view, bulk\_insert}
 \end{codeenv}
 Using this \ac{SQL}, all entries were successfully loaded within 41 minutes and 57 seconds. The graphical interface of the Microsoft SQL Server Management Tool then enabled an effortless full-text index creation.
-\subsection{Use the prototype}
+\subsection{Prototype Utilization}
 To use the prototype the \ac{SQL} server must be started and the website including the code generator is started by running the command \lstinline$cargo run$ in the project folder. On localhost:8080 a minimal website with a search field is now visible, where you can enter any request in the custom query language.
 \begin{figure}[H]
     \caption{Search field}
