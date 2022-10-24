@@ -1,4 +1,4 @@
-\subsection{Parser}
+\subsubsection{Parser}
 In the parser, a large part of the heavy lifting is done, because here the list of tokens is interpreted and checked for their admissibility in the language. The parser of this custom query language stores a copy of the token list still to be parsed and additionally the current token and the next one in the list. The current token is often used to make comparisons between it and the token that would be expected, while the peek token is often used to see whether the end of the token list has already been reached. When initializing the parser both the current and the peek token are set to \lstinline[language=Rust]$Token::EoF$ which represents the edge case end of file (code \ref{code:parser-struct}, 66-67).
 \begin{codeenv}
     \captionof{mycapcode}{Parser struct}
