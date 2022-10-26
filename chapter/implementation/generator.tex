@@ -67,6 +67,7 @@ The third and simplest generate function is generate\_operator, which translates
     \lstinputlisting[language=Rust, linerange={190-201}]{code/code_gen/generator.rs}
     \centerline{Source: generator.rs}
 \end{codeenv}
+\subsubsection{Example Generation}
 All parts up to the generator combined already make up a working code generator for a custom query language. For example the input \lstinline[language=Fulltext-Search]$@contains:apple -tree: + @thesaurus:"human":$, the lexer converts into a list of tokens. The parser then interprets these tokens into an \ac{AST}, one exemplary representation can be seen in figure \ref{fig:ast-example}.
 \begin{figure}[H]
     \caption{Parsed example AST}
