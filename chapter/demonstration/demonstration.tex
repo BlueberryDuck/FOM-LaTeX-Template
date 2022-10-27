@@ -4,7 +4,7 @@ In this chapter, the prototype is shown demonstratively to highlight the purpose
 \subsection{Database Preparation}
 The Wikipedia dump is provided in one or more compressed .bz2 files. With the help of an etree of lxml a parser can be built, with which the title and content of each entry can be extracted. Many of the entries are so-called redirects, which are irrelevant for a full-text search and are filtered out (code \ref{code:wiki-csv}, 54). Otherwise, the title and content are written to a CSV file, and further, the longest title and text entries as well as the total amount of entries are being kept track of.
 \begin{codeenv}
-    \captionof{mycapcode}{Wikipedia as csv}
+    \captionof{mycapcode}{Wikipedia as CSV}
     \label{code:wiki-csv}
     \lstinputlisting[language=Python, linerange={39-65}]{code/wikidump_sqlserver/convert_wiki_to_csv.py}
     \centerline{Source: convert\_wiki\_to\_csv.py}

@@ -8,14 +8,14 @@ To host a website using actix\_web, an HTTP server must be started in an asynchr
     \centerline{Source: main.rs}
 \end{codeenv}
 The interface between the website and Rust code serves two structs, which can exchange data between the two parties. For this purpose, the crate serde is used, with which structs can be easily serialized \parencite[cf.][n.p.]{tolnay_serde_2017}. A struct for the search query including a string is needed (code \ref{code:web-search}, 114-117), and a struct for the search results, which contain a title and link as a string and a rank as an unsigned integer each (code \ref{code:web-search}, 118-123).\\
-Each of the subpages is assigned a function, which defines for the respective page, what functionally happens on it. The search page is straightforward, a text field that can be submitted (code \ref{code:web-search}, 125-131).
+Each of the subpages is assigned a function, which defines for the respective page, what functionally happens on it. The search page is straightforward, with a text field that can be submitted (code \ref{code:web-search}, 125-131).
 \begin{codeenv}
     \captionof{mycapcode}{Website search}
     \label{code:web-search}
     \lstinputlisting[language=Rust, linerange={113-131}]{code/code_gen/main.rs}
     \centerline{Source: main.rs}
 \end{codeenv}
-The function of the result page is a bit more complex because here the code generator is run, the \ac{SQL} is executed and the results are read. Because the result page resembles a POST request the function is passed the data of the search page. From this the search query is extracted and the code generator is executed (code \ref{code:web-result}, 138). With the help of two functions, the generated \ac{SQL} is executed and the results are read (code \ref{code:web-result}, 141-142).\\
+The function of the result page is a bit more complex because here the code generator is run, the \ac{SQL} is executed and the results are read. Because the result page resembles a POST request the function is passed the data of the search page. From this, the search query is extracted and the code generator is executed (code \ref{code:web-result}, 138). With the help of two functions, the generated \ac{SQL} is executed and the results are read (code \ref{code:web-result}, 141-142).\\
 The results of the query are in the form of a string-integer tuple and are now fitted into the form of the result struct (code \ref{code:web-result}, 146-153). The link attribute is very similar to the title, but all blanks are replaced with \_ so that this attribute can be used to link directly to the associated Wikipedia article, a small quirk of the chosen test data.
 \begin{codeenv}
     \captionof{mycapcode}{Website results}
