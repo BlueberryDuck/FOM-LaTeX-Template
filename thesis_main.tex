@@ -392,6 +392,8 @@
 \setcounter{page}{\value{savepage}}
 \section*{\AppendixName} %Überschrift "Anhang", ohne Nummerierung
 \addcontentsline{toc}{section}{\AppendixName} %Den Anhang ohne Nummer zum Inhaltsverzeichnis hinzufügen
+\newcounter{apxnumber}
+\newcommand{\apxtitle}[1]{\stepcounter{apxnumber}\textbf{\large Appendix \Roman{apxnumber}: #1}}
 
 \begin{appendix}
 	% Nachfolgende Änderungen erfolgten aufgrund von Issue 163
