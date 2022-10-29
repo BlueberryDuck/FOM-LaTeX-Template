@@ -1,11 +1,7 @@
+\newpage
 \subsection{Discussion}
-\begin{itemize}
-    \item What research question or problem was addressed?
-    \item What type of research was done?
-    \item How were data collected and analyzed?
-    \item What were the most important findings?
-    \item What is the overall answer to the research question?
-    \item What are the implications of the results?
-    \item Are there any important limitations?
-    \item Are there any key recommendations?
-\end{itemize}
+The thesis addresses the research question of to what extent a software component can be developed using a custom query language and code generator to enable full-text search on \ac{SQL} servers. A \ac{DSL} was developed and a code generator was implemented to make the tool of full-text search, which otherwise is obstructed by \ac{TSQL} syntax, more accessible. The emphasis was on the approach of practical implementation.\\
+The type of research chosen was prototypical implementation, which is defined as the iterative process of implementation, evaluation, and adaptation, where step by step the requirements are implemented as a minimum viable product each.\\
+In the beginning, research was done by studying literature, where concepts of mainly compiler construction and language design but also full-text search were addressed. These topics had to be understood and the relevant concepts for this thesis had to be extracted. During development, these concepts were implemented practically, with adaptations for the specific use case. The resulting challenges were evaluated and adjustments were made. Thus, the prototype has taken shape piece by piece.\\
+The most important finding was the division of the prototype into modules or milestones, which can function more or less independently of each other. Thus, different approaches for the individual modules could be tried out. The kind of parser, for example, that was implemented could also be replaced by the tool 'YACC' if necessary, without having to make major adjustments to the definition of the language or the generator. As long as the input and output of the individual components correspond to a standard, improvements or extensions can be made relatively easily.\\
+The prototype has a strong limitation in its area of application, it is limited to the possibilities of \ac{TSQL}. To be able to develop completely new functions of full-text search, the backend of the code generator would have to take another form. Other database operators, such as Oracle, offer other full-text functions which could then be used. A major extension of the code generator would be a complete change, away from a transpiler, which is dependent on other languages, to a full-fledged compiler that does not only translate the query language into some kind of \ac{SQL}. Independently of the code generator, other changes could be made to the prototype to access \ac{SQL} servers that do not operate on the same machine, and the user interface could be extended with more functions to customize the constants of the database or to compose a request by simply selecting functions instead of typing them out.

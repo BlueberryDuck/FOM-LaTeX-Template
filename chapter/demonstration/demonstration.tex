@@ -37,15 +37,7 @@ For example, if you enter the command \lstinline[language=Fulltext-Search]$@near
     \\
     \centerline{Source: Own prototype}
 \end{figure}
-The actual generated \ac{SQL} can be looked up in the prototype files if needed. If an incorrect command is entered, the error message thrown in the generator is displayed. For example, the command \lstinline[language=Fulltext-Search]$@weighted:cat, 0.5, dog, 0.8:$ should not be processed as the weights do not add up to exactly 1.
-\begin{figure}[H]
-    \caption{Weight error}
-    \label{fig:weight-error}
-    \includegraphics[width=0.9\textwidth]{weight-error.png}
-    \\
-    \centerline{Source: Own prototype}
-\end{figure}
-For demonstration purposes, a complicated search query with multiple functions and nested search terms can also be submitted. A search for apple but without the presence of the terms company or Steve Jobs in combination with a term that has the same meaning as fruit can be formulated in the query language as \lstinline[language=Fulltext-Search]$@contains:apple -(company | "Steve Jobs"): + @thesaurus:fruit:$.
+For demonstration purposes, a more complicated search request with multiple functions and nested search terms is submitted. A search for apple but without the presence of the terms company or Steve Jobs in combination with a term that has the same meaning as fruit can be formulated in the query language as \lstinline[language=Fulltext-Search]$@contains:apple -(company | "Steve Jobs"): + @thesaurus:fruit:$.
 \begin{figure}[H]
     \caption{Results for fruit apples}
     \label{fig:apple-fruit}
@@ -53,4 +45,12 @@ For demonstration purposes, a complicated search query with multiple functions a
     \\
     \centerline{Source: Own prototype}
 \end{figure}
-The first result 'Arsenic' describes a chemical element that is listed because of several sentences in the article mentioning its occurrence in apple juice and other fruit juices. Note that it may not be the very best result expected as the test data does not seem to contain every single Wikipedia article, only a large amount.
+The first result 'Arsenic' describes a chemical element that is listed because of several sentences in the article mentioning its occurrence in apple juice and other fruit juices. Note that it may not be the very best result expected as the test data does not seem to contain every single Wikipedia article, only a large amount. The actual generated \ac{TSQL} can be looked up in the prototype files if needed.\\
+If an incorrect command is entered, the error message thrown in the code generator is displayed. For example, the command \lstinline[language=Fulltext-Search]$@weighted:cat, 0.5, dog, 0.8:$ is not processed as the weights do not add up to exactly 1.
+\begin{figure}[H]
+    \caption{Weight error}
+    \label{fig:weight-error}
+    \includegraphics[width=0.9\textwidth]{weight-error.png}
+    \\
+    \centerline{Source: Own prototype}
+\end{figure}
