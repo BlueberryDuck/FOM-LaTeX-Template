@@ -179,11 +179,6 @@
 \graphicspath{{./}{./figures/}}
 
 %-----------------------------------
-% Weitere Ebene einfügen
-%-----------------------------------
-\input{scripts/weitereEbene}
-
-%-----------------------------------
 % Zeilenabstand 1,5-zeilig
 %-----------------------------------
 \usepackage{setspace}
@@ -327,7 +322,7 @@
 % Um das Tabellen- und Abbbildungsverzeichnis zu de/aktivieren ganz oben in Documentclass schauen
 \setcounter{page}{3}
 \addtocontents{toc}{\protect\enlargethispage{-20mm}}% Die Zeile sorgt dafür, dass das Inhaltsverzeichnisseite auf die zweite Seite gestreckt wird und somit schick aussieht. Das sollte eigentlich automatisch funktionieren. Wer rausfindet wie, kann das gern ändern.
-\setcounter{tocdepth}{4}
+\setcounter{tocdepth}{3}
 \tableofcontents
 \newpage
 
@@ -404,8 +399,7 @@
 	\renewcommand\@seccntformat[1]{\csname the#1\endcsname:\quad}
 	\makeatother
 	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} %
-	\renewcommand{\thesection}{\AppendixName\ \Roman{section}}
-	\renewcommand\thesubsection{\AppendixName\ \Roman{section}.\Roman{subsection}}
+	\renewcommand{\thesection}{\AppendixName\ \arabic{section}} %Can't make it Roman or even delete it otherwise all sections end with '.' I have no idea why
 	\input{chapter/appendix/appendix}
 \end{appendix}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
