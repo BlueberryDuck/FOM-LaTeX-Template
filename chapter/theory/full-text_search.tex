@@ -23,7 +23,7 @@ The recall is defined as the relation between relevant search results and releva
 \end{mycapequ}
 Although it is nearly impossible to maximize both recall and precision it is still relevant to keep both values as high as possible. Formula \ref{form:whmean} offers the possibility to prefer one of the two metrics precision and recall when calculating the quality of a search result. The nonnegative weight \symbeta weights both metrics equally for a value of 1.0. A value less than 1.0 prefers recall, while a value above 1.0 prefers precision.
 \begin{mycapequ}[H]
-    \caption{Weighted harmonic mean}
+    \caption{Weighted Harmonic Mean}
     \label{form:whmean}
     \begin{tcolorbox}[ams equation]
         \symFb = \frac{\left(1 + \symbeta^{2}\right) \cdot \left(\symp \cdot \symr\right)}{\symbeta^{2} \cdot \symp + \symr}
@@ -48,7 +48,7 @@ The \textbf{indexer} generates an inverted keyword list with a batch containing 
 A \textbf{query processor} manages the insertion and merge operations and collects statistics on distribution and frequency for ranking purposes and query execution.
 \subsubsection{SQL Server Full-Text Query Features}
 Full-text indexes can be created on \ac{SQL} Servers with the \ac{DDL} statement \lstinline[language=SQL]$CREATE INDEX$ and can make use of other \ac{SQL} Server utilities; these include backup and restore and attachment of databases. There are three options to create and manage indexes on \ac{SQL} Servers. \textbf{Full Crawl} always rebuilds the whole full-text index by scanning the entire table. \textbf{Incremental Crawl} logs the timestamp of the last re-index and retains changes by storing them in a column. \textbf{Change Tracking} enables a near real-time validity between the full-text index and the table by tracking changes to the indexed data using the \ac{SQL} Server Query Processor \parencite[cf.][p. 9]{hamilton_microsoft_2001}.\\
-Full-text search is represented in \ac{SQL} with three possible constructs: \parencite[cf.][p. 9]{hamilton_microsoft_2001}
+Full-text search functionalities in \ac{TSQL} are called by using one of the following methods: \parencite[cf.][p. 9]{hamilton_microsoft_2001}
 \begin{enumerate}
     \item Contains Predicate: A contains predicate is true if one of the specified columns contains terms that satisfy the specified search condition. E.g. \lstinline[language=SQL]$Contains(author, ('Ag* or "Marc Miller"'))$ will match entries where the column author contains words like 'Ag', 'Agatha', or 'Marc Miller'.
     \item Freetext Predicate: Freetext predicates are true if one of the specified columns contains terms that stem from the terms in the specified search condition. E.g. \lstinline[language=SQL]$Freetext(content, 'fishing')$ will match entries where content contains words like 'fishing', 'fish', or 'fisher'.

@@ -70,7 +70,7 @@ The third and simplest generate function is generate\_operator, which translates
 \subsubsection{Example Generation}
 All parts up to the generator combined already make up a working code generator for a custom query language. For example the input \lstinline[language=Fulltext-Search]$@contains:apple -tree: + @thesaurus:"human":$, the lexer converts into a list of tokens. The parser then interprets these tokens into an \ac{AST}, one exemplary representation can be seen in figure \ref{fig:ast-example}.
 \begin{figure}[H]
-    \caption{Parsed example AST}
+    \caption{Parsed Example AST}
     \label{fig:ast-example}
     \begin{forest}
         box/.style={sharp corners,
@@ -115,5 +115,5 @@ FROM(
     ) AS FS_RESULT
 ORDER BY FS_RESULT.RANK DESC;
     \end{lstlisting}
-    \centerline{Source: Own code generator}
+    \centerline{Source: Own prototype}
 \end{codeenv}
